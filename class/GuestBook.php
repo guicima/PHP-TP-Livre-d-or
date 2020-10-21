@@ -1,5 +1,5 @@
 <?php
-class GuestBook
+class GuestBook //Manage the messages' file
 {
     private $file_dir;
 
