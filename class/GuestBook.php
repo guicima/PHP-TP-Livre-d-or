@@ -3,9 +3,16 @@ class GuestBook //Manage the messages' file
 {
     private $file_dir;
 
-    public function __construct($file_dir)
+    public function __construct($file)
     {
-        $this->file_dir = $file_dir;
+        $directory = dirname($file);
+        if (!is_dir($directory)) {
+            mkdir($directory, 0777, true);
+        }
+        if (!file_exists($file)) {
+            touch($file);
+        }
+        $this->file_dir = $file;
     }
 
     public function addMessage(Message $message): void
